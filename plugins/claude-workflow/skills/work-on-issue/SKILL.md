@@ -37,21 +37,28 @@ Raw arguments string (orchestrator parses this itself — see „Input parsing")
 $ARGUMENTS
 ```
 
-Always-useful working-tree state:
+Always-useful working-tree state (preloaded commands tolerate failure so the skill still loads outside a git repo / without `gh`; treat „not a git repository" or `gh` errors as a signal, not a crash):
 
 ```!
-git status --short
+git status --short 2>&1 || true
 ```
 
 ```!
-git rev-parse --abbrev-ref HEAD
+git rev-parse --abbrev-ref HEAD 2>&1 || true
 ```
 
 Open issues (cheap, helpful regardless of mode — w empty mode to twoja lista do zaprezentowania użytkownikowi; w pozostałych trybach to kontekst pokrewnych ticketów):
 
 ```!
-gh issue list --state open --limit 30 --json number,title,labels,milestone
+gh issue list --state open --limit 30 --json number,title,labels,milestone 2>&1 || true
 ```
+
+### Preflight — abort early if the environment is wrong
+
+Before doing anything else, inspect the three blocks above:
+
+- If `git rev-parse` output contains `not a git repository` (or similar), **stop**. Tell the user: „Skill `work-on-issue` musi być uruchomiony w repozytorium projektu `llm-chat-python-tutorial-docker`. Aktualny katalog to nie jest repo git — przełącz się do właściwego katalogu projektu i odpal skilla ponownie." Do **not** continue to phases 1–3.
+- If `gh issue list` failed (auth error, no GitHub remote, network), report what failed and ask the user whether to: (a) fix the issue and retry, or (b) continue in **free-text mode** (skips `gh`). In empty mode and issue-number mode you **cannot** continue without `gh`.
 
 ## Fetching issue bodies
 
