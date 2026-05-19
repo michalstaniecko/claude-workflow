@@ -1,15 +1,15 @@
 # claude-workflow
 
-Plugin Claude Code zawierający workflow do pracy nad issue/zadaniami w projekcie
-`llm-chat-python-tutorial-docker`. Aktualnie udostępnia jeden skill:
+A Claude Code plugin with a workflow for issue/task work in the
+`llm-chat-python-tutorial-docker` project. Currently ships one skill:
 
-- **`work-on-issue`** — pipeline multi-agentowy: Opus planuje, Sonnet
-  implementuje, na końcu dwa równoległe review na Sonnet (zgodność z
-  założeniami + code review), z pętlą zwrotną. Działa w trzech trybach: bez
-  argumentu (wybór z listy otwartych issue), z numerem/numerami issue, albo
-  wolnym opisem zadania.
+- **`work-on-issue`** — multi-agent pipeline: Opus plans, Sonnet
+  implements, then two parallel Sonnet reviews (acceptance compliance +
+  code review) with a feedback loop. Runs in three modes: no argument
+  (pick from a list of open issues), one or more issue numbers, or a
+  free-text task description.
 
-## Struktura
+## Structure
 
 ```
 claude-workflow/                      # marketplace root
@@ -25,83 +25,83 @@ claude-workflow/                      # marketplace root
 └── README.md
 ```
 
-## Instalacja
+## Installation
 
-Plugin instaluje się przez system pluginów Claude Code. Najpierw dodaj
-to repozytorium jako marketplace, a potem zainstaluj z niego plugin.
+The plugin is installed via Claude Code's plugin system. First add this
+repository as a marketplace, then install the plugin from it.
 
-### 1. Dodaj marketplace z GitHuba
+### 1. Add the marketplace from GitHub
 
-W Claude Code uruchom:
+In Claude Code, run:
 
 ```
 /plugin marketplace add michalstaniecko/claude-workflow
 ```
 
-Możesz też podać pełny URL HTTPS lub Git:
+You can also pass a full HTTPS or Git URL:
 
 ```
 /plugin marketplace add https://github.com/michalstaniecko/claude-workflow.git
 ```
 
-### 2. Zainstaluj plugin
+### 2. Install the plugin
 
 ```
 /plugin install claude-workflow
 ```
 
-albo otwórz interaktywne menu:
+Or open the interactive menu:
 
 ```
 /plugin
 ```
 
-i wybierz plugin `claude-workflow` z listy.
+and pick `claude-workflow` from the list.
 
-### 3. Weryfikacja
+### 3. Verification
 
-Po instalacji skill `work-on-issue` powinien być widoczny na liście dostępnych
-skilli. Możesz go wywołać przez:
+After installation the `work-on-issue` skill should appear in the list
+of available skills. You can invoke it with:
 
 ```
 /work-on-issue 12
 ```
 
-lub bez argumentu, żeby wybrać issue z listy:
+or without an argument, to pick an issue from the list:
 
 ```
 /work-on-issue
 ```
 
-albo opisem zadania bez issue:
+or with a free-text task description (no issue):
 
 ```
-/work-on-issue popraw walidację slug w tenant API
+/work-on-issue fix slug validation in the tenant API
 ```
 
-## Aktualizacje
+## Updates
 
 ```
 /plugin marketplace update michalstaniecko/claude-workflow
 /plugin update claude-workflow
 ```
 
-## Odinstalowanie
+## Uninstall
 
 ```
 /plugin uninstall claude-workflow
 ```
 
-## Wymagania
+## Requirements
 
-Skill `work-on-issue` zakłada, że pracujesz w repo `llm-chat-python-tutorial-docker`
-i masz dostępne:
+The `work-on-issue` skill assumes you're working in the
+`llm-chat-python-tutorial-docker` repo and have available:
 
-- `gh` CLI (GitHub) zalogowane na konto z dostępem do repo,
+- `gh` CLI (GitHub) logged in with access to the repo,
 - `git`,
 - `uv` (Python tooling),
-- `docker compose` (opcjonalnie, do uruchamiania środowiska),
-- `npm` jeśli ruszasz `admin-ui/`.
+- `docker compose` (optional, for running the environment),
+- `npm` if you're touching `admin-ui/`.
 
-Pełna lista konwencji i guardraili — w
-[`skills/work-on-issue/SKILL.md`](skills/work-on-issue/SKILL.md).
+For the full list of conventions and guardrails see
+[`plugins/claude-workflow/skills/work-on-issue/SKILL.md`](plugins/claude-workflow/skills/work-on-issue/SKILL.md).
