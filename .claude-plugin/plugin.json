@@ -1,0 +1,10 @@
+{
+  "name": "claude-workflow",
+  "version": "0.1.0",
+  "description": "Workflow plugin for Claude Code — currently ships the work-on-issue skill: a 4-stage pipeline (Opus plans, Sonnet implements, two parallel Sonnet reviews — compliance + code review) for issue-driven or ad-hoc work in the llm-chat-python-tutorial-docker project.",
+  "author": {
+    "name": "Michał Staniecko",
+    "email": "michal.staniecko@gmail.com"
+  },
+  "keywords": ["workflow", "issue", "pipeline", "multi-agent"]
+}

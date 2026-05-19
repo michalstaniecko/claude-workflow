@@ -1,0 +1,14 @@
+{
+  "name": "claude-workflow",
+  "owner": {
+    "name": "Michał Staniecko",
+    "email": "michal.staniecko@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "claude-workflow",
+      "source": ".",
+      "description": "Workflow plugin — work-on-issue skill: 4-stage pipeline (Opus plans, Sonnet implements, two parallel Sonnet reviews — compliance + code review)."
+    }
+  ]
+}
