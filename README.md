@@ -12,12 +12,16 @@ Plugin Claude Code zawierający workflow do pracy nad issue/zadaniami w projekci
 ## Struktura
 
 ```
-claude-workflow/
+claude-workflow/                      # marketplace root
 ├── .claude-plugin/
-│   └── plugin.json
-├── skills/
-│   └── work-on-issue/
-│       └── SKILL.md
+│   └── marketplace.json              # marketplace catalog
+├── plugins/
+│   └── claude-workflow/              # plugin
+│       ├── .claude-plugin/
+│       │   └── plugin.json           # plugin manifest
+│       └── skills/
+│           └── work-on-issue/
+│               └── SKILL.md
 └── README.md
 ```
 

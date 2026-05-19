@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "claude-workflow",
-      "source": ".",
+      "source": "./plugins/claude-workflow",
       "description": "Workflow plugin — work-on-issue skill: 4-stage pipeline (Opus plans, Sonnet implements, two parallel Sonnet reviews — compliance + code review)."
     }
   ]
